@@ -14,7 +14,8 @@ searchButton.addEventListener("click", () => {
     setTimeout(() => {
         loadingDiv.style.display = "none";
         /*page.style.transform = "translateY(-20%)";
-        page.style.transition = "transform 1s";*/
+        page.style.transition = "transform 1s
+        ";*/
         results.style.display = "block";
         window.scroll({
             top: 200,
