@@ -55,8 +55,8 @@ searchButton.addEventListener("click", () => {
                                 }
                                 //console.log(nicks);
                             }));
-                //console.log("current i: "+i);
-                        }
+                    //console.log("current i: "+i);
+                }
                 return nicks;
             }).then(nicks => {
                 //console.log(nicks);
@@ -64,27 +64,10 @@ searchButton.addEventListener("click", () => {
                 //console.log(viewerListUrl);
 
                 Promise.all(viewerListUrl.map(url => fetch(url)))
-                .then(responses => {
-                    //Promise.all(responses.map(response => response.json())).then(aaa => console.log(aaa));
-                    return responses.map(response => response.json());
-                }).then(aaa=>Promise.all(aaa).then(bbb=>console.log(bbb)));
-                
-                //.then(data => {
-                    //console.log(data);
-                    /*for (viewer of data.chatters.viewers) {
-                        if (viewer == searchName) {
-                            results.innerHTML = `<p>${viewer} je na ${data.chatters.broadcaster}</p>`;
-                        }
-                    }*/
-
-                    /*for (chatter of data)
-                    {
-                        for (chat in chatter)
-                        {
-                            console.log(chat);
-                        }
-                    }*/
-                //});
+                    .then(responses => {
+                        //Promise.all(responses.map(response => response.json())).then(aaa => console.log(aaa));
+                        return responses.map(response => response.json());
+                    }).then(aaa => Promise.all(aaa).then(bbb => console.log(bbb)));
             })));
 });
 
@@ -103,7 +86,7 @@ document.addEventListener("scroll", () => {
 });
 
 function search() {
-    
+
 }
 
 search();
@@ -111,54 +94,41 @@ search();
 
 //----------------------------
 
+
 function doJSONP(url, callbackFuncName) {
     var fullURL = url + "?callback=" + callbackFuncName;
     var s = document.createElement("script");
     s.src = fullURL;
     document.body.appendChild(s);
- }
-
-var jsonpCallbacks = {cntr: 0};
-
+}
+const jsonpCallbacks = { cntr: 0 };
 function getDataForId(id, id2, url, fn) {
-    // create a globally unique function name
     var name = "fn" + jsonpCallbacks.cntr++;
-    
-    // put that function in a globally accessible place for JSONP to call
-    jsonpCallbacks[name] = function() {
-        console.log(id+" "+id2+" "+url);
-        // upon success, remove the name
-        
-        //console.log(name);
-        //console.log(jsonpCallbacks);
+
+    jsonpCallbacks[name] = function () {
+        console.log(id + " " + id2 + " " + url);
         delete jsonpCallbacks[name];
-        //console.log(jsonpCallbacks);
-        
-        // now call the desired callback internally and pass it the id
-        //console.log(Array.prototype.slice(arguments));
-        //let arr = [];
-        //console.log(bbb)
         var args = Array.prototype.slice.call(arguments);
         console.log(args);
         args.unshift(id, id2);
         console.log(args);
         fn.apply(this, args);
     }
-    doJSONP(url, "jsonpCallbacks." + name);
+
+    var fullURL = url + "?callback=jsonpCallbacks." + name;
+    var s = document.createElement("script");
+    s.src = fullURL;
+    document.body.appendChild(s);
 }
 
 let array = ["a", "b", "c", "d", "e"];
 let array2 = ["a", "b", "c", "d", "e"];
 let streams = ["https://tmi.twitch.tv/group/user/forsen/chatters",
-"https://tmi.twitch.tv/group/user/herdyn/chatters",
-"https://tmi.twitch.tv/group/user/sjow/chatters",
-"https://tmi.twitch.tv/group/user/fattypillow/chatters",
-"https://tmi.twitch.tv/group/user/angrypug/chatters"];
+    "https://tmi.twitch.tv/group/user/herdyn/chatters",
+    "https://tmi.twitch.tv/group/user/sjow/chatters",
+    "https://tmi.twitch.tv/group/user/fattypillow/chatters",
+    "https://tmi.twitch.tv/group/user/angrypug/chatters"];
 for (let i = 0; i < 5; i++) {
-    getDataForId(array[i], array2[i], streams[i], function(id, id2/* other args here*/) {
-        // you can process the returned data here with id available as the argument
-        //console.log(id+" "+id2);
+    getDataForId(array[i], array2[i], streams[i], function (id, id2) {
     });
-    
 }
-console.log(this)
