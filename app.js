@@ -39,7 +39,7 @@ searchButton.addEventListener("click", () => {
                     nicks.push(stream.channel.name);
                 }
                 //console.log(data)
-                //console.log(data._total);
+                console.log(data._total);
                 let pages = Math.ceil(data._total / 100);
                 //console.log(pages);
 
@@ -53,37 +53,39 @@ searchButton.addEventListener("click", () => {
                                 for (stream of data.streams) {
                                     nicks.push(stream.channel.name);
                                 }
-                                //console.log(nicks);
+                                console.log(nicks);
+                                if (i + 1 > pages)
+                                    return nicks;
                             }));
-                //console.log("current i: "+i);
-                        }
-                return nicks;
+                    //console.log("current i: "+i);
+                }
+                //return nicks;
             }).then(nicks => {
                 //console.log(nicks);
                 const viewerListUrl = nicks.map(nick => `https://tmi.twitch.tv/group/user/${nick}/chatters`);
-                //console.log(viewerListUrl);
+                console.log(nicks);
 
                 Promise.all(viewerListUrl.map(url => fetch(url)))
-                .then(responses => {
-                    //Promise.all(responses.map(response => response.json())).then(aaa => console.log(aaa));
-                    return responses.map(response => response.json());
-                }).then(aaa=>Promise.all(aaa).then(bbb=>console.log(bbb)));
-                
-                //.then(data => {
-                    //console.log(data);
-                    /*for (viewer of data.chatters.viewers) {
-                        if (viewer == searchName) {
-                            results.innerHTML = `<p>${viewer} je na ${data.chatters.broadcaster}</p>`;
-                        }
-                    }*/
+                    .then(responses => {
+                        Promise.all(responses.map(response => response.json()))
+                            .then(chatters => chatters);
+                    });
 
-                    /*for (chatter of data)
+                //.then(data => {
+                //console.log(data);
+                /*for (viewer of data.chatters.viewers) {
+                    if (viewer == searchName) {
+                        results.innerHTML = `<p>${viewer} je na ${data.chatters.broadcaster}</p>`;
+                    }
+                }*/
+
+                /*for (chatter of data)
+                {
+                    for (chat in chatter)
                     {
-                        for (chat in chatter)
-                        {
-                            console.log(chat);
-                        }
-                    }*/
+                        console.log(chat);
+                    }
+                }*/
                 //});
             })));
 });
@@ -103,7 +105,7 @@ document.addEventListener("scroll", () => {
 });
 
 function search() {
-    
+
 }
 
 search();
