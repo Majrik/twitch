@@ -33,35 +33,20 @@ body {
 }
 
 header {
-    abackground-color:  rgba(230, 178, 178, 0.356);
     height: 10vh;
     display: flex;
     align-items: center;
-    aposition: fixed;
 }
 
 header img {
-    /*border: 1px solid blue;*/
-    aposition: relative;
-    atop: 50%;
-    atransform: translate(0, -50%);
-    aleft: 30px;
     margin: 0 20px 0 15%;
 }
 
 header h1 {
-    aborder: 1px solid blue;
-    aposition: relative;
-    atop: 50%;
-    atransform: translate(0, -50%);
-    atext-align: center;
-    ajustify-content: center;
-    aalign-self: center;
     color: #fff;
 }
 
 section {
-    abackground-color: rgba(176, 248, 174, 0.459);
     height: 70vh;
     display: flex;
     flex-direction: column;
@@ -70,11 +55,6 @@ section {
 }
 
 .search {
-    aborder: 3px solid blue;
-    aposition: absolute;
-    atop: 40%;
-    aleft: 50%;
-    atransform: translate(-50%, -40%);
     width: 70vw;
     height: 70px;
     border-radius: 7px;
@@ -91,11 +71,6 @@ section {
 }
 
 .button {
-    /*border: 1px solid blue;*/
-    aposition: absolute;
-    atop: 55%;
-    aleft: 50%;
-    atransform: translate(-50%, -55%);
     width: 180px;
     height: 70px;
     color: #fff;
@@ -105,7 +80,6 @@ section {
     font-size: 25px;
     cursor: pointer;
     margin: 50px 0 0 0;
-    aborder: 1px solid blue;
 }
 
 .button:hover {
@@ -114,15 +88,11 @@ section {
 
 .button:focus {
     box-shadow: 0 0 0 3px #A394D0;
-    /*outline: 3px solid rgb(199, 146, 230);*/
     outline: 0;
 }
 
 footer {
-    aborder: 3px solid green;
-    /*background-color: rgba(171, 172, 238, 0.555);*/
     height: 20vh;
-    atext-align: right;
     padding: 0 5% 0 0;
     display: flex;
     flex-direction: column;
@@ -130,26 +100,16 @@ footer {
 }
 
 footer h2 {
-    aborder: 1px solid blue;
     padding: 0 0 20px 0;
 }
 
-footer p {
-    aborder: 1px solid blue;
-    atext-align: right;
-    apadding: 20px 300px;
-}
-
 footer .border {
-    adisplay: none;
     border-left: 3px solid #392E5C;
-    aheight: 10px;
     padding: 0 0 0 10px;
 }
 
 .results {
     background-color: #fff;
-    aheight: auto;
     width: 80%;
     justify-self: center;
     border-radius: 20px;
@@ -162,10 +122,8 @@ footer .border {
     width: 100%;
     background-color: #614095;
     display: flex;
-    ajustify-content: center;
     align-items: center;
     color: #fff;
-    aflex-direction: row;
 }
 
 .fixedNav .navLogoText {
@@ -174,7 +132,6 @@ footer .border {
 }
 
 .fixedNav .navSearchButton {
-    amargin-left: auto;
     padding: 0 0 0 20%;
 }
 
@@ -211,6 +168,5 @@ footer .border {
 
 .fixedNav .navButton:focus {
     box-shadow: 0 0 0 3px #A394D0;
-    /*outline: 3px solid rgb(199, 146, 230);*/
     outline: 0;
 }
