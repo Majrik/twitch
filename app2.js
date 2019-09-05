@@ -126,19 +126,21 @@ searchButton.addEventListener("click", () => {
                             //console.log(streamers2);
                             //resultsArray = [];
 
+                            let counter = 0;
                             if (j+1 == languages.length) {
-                                console.log(streamers);
+                                //console.log(streamers);
                                 for (let i = 0; i < streamers.length; i++) {
-                                
+                                //counter++;
                                 
                                     /*let s = document.createElement("script");
                                     s.src = `https://tmi.twitch.tv/group/user/${streamers[i]}/chatters?callback=myDisplayFunction`;
                                     document.body.appendChild(s);*/
     
                                     getDataForId(chattersUrl[i], streamers[i], searchName, function (id, id2, resultsArray) {
-                                        //console.log(i)
-                                        if (i == streamers.length - 1) {
-                                            //console.log(i+" "+(streamers.length-1));
+                                        //console.log(counter);
+                                        counter++;
+                                        if (counter == streamers.length) {
+                                            //console.log(i)
                                             for (resultArray of resultsArray) {
                                                 results.innerHTML += resultArray;
                                                 
