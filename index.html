@@ -5,14 +5,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./style2.css" />
+    <link rel="stylesheet" href="./style.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
     <div class="loading">
-        <h1>Loading...</h1>
+        <div class="loadingProgress">
+            <h1>Loading...</h1>
+            <p></p>
+            <div class="bar">
+                <div class="barFilled"></div>
+            </div>
+        </div>
     </div>
     <div class="page">
         <header>
@@ -20,18 +26,21 @@
             <h1>Twitch Search</h1>
         </header>
         <div class="fixedNav">
-                <div class="navLogoText">
-                        <img src="img/logo.png" height="40px">
-                        <h2>Twitch Search</h2>
-                    </div>
+            <div class="navLogoText">
+                <img src="img/logo.png" height="40px">
+                <h2>Twitch Search</h2>
+            </div>
             <div class="navSearchButton">
                 <input type="text" placeholder="Type Username..." class="navSearch" />
-                <button type="submit" class="navButton">Search</button>
+                <button type="button" class="navButton">Search</button>
             </div>
         </div>
         <section>
-            <input type="text" placeholder="Type Username..." class="search" />
-            <button type="submit" class="button">Search</button>
+            
+                    <input type="text" placeholder="Type Username..." class="search" />
+                    <button type="submit" class="button">Search</button>
+            
+            
         </section>
         <div class="results">
             <h2>Results</h2>
@@ -39,8 +48,7 @@
         <footer>
             <h2>Search among</h2>
             <div class="border">
-                <p>1337 US streamers</p>
-                <p>420 CZ streamers</p>
+                <p>Loading...</p>
             </div>
         </footer>
     </div>
